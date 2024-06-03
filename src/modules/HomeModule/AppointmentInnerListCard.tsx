@@ -8,11 +8,11 @@ import {
   StyleSheet,
   Text,
 } from 'squashapps-react-native-uikit';
-import {APP_THEME, USER_PROFILE} from '../../utils/constants';
-import {AppointmentsList} from '../AppointmentModule/store/appointment.types';
+import { APP_THEME, USER_PROFILE } from '../../utils/constants';
+import { AppointmentsList } from '../AppointmentModule/store/appointment.types';
 
-const {WHITE, NEUTRAL_500, PRIMARY_COLOR_50} = getColors(APP_THEME);
-const {SvgMessage} = Icons;
+const { WHITE, NEUTRAL_500, PRIMARY_COLOR_50 } = getColors(APP_THEME);
+const { SvgMessage } = Icons;
 
 const styles = StyleSheet.create({
   inlineCard: {
@@ -42,7 +42,7 @@ type Props = {
   totalLength: number;
 };
 
-const AppointmentInnerListCard = ({item, index, totalLength}: Props) => {
+const AppointmentInnerListCard = ({ item, index, totalLength }: Props) => {
   const containerStyle = [
     styles.inlineCard,
     {
@@ -63,9 +63,9 @@ const AppointmentInnerListCard = ({item, index, totalLength}: Props) => {
             />
           </Card>
           <Flex between overrideStyle={styles.nameContainer}>
-            <Text type="heading400">{`Dr.${item?.name}`}</Text>
+            <Text type="heading400">{item?.name}</Text>
             <Text type="heading200" color="gray">
-              {item?.department}
+              {item.des}
             </Text>
           </Flex>
         </Flex>

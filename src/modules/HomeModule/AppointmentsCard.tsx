@@ -16,6 +16,7 @@ import { APP_THEME } from '../../utils/constants';
 import AppointmentInnerListCard from './AppointmentInnerListCard';
 import { AppointmentsList } from '../AppointmentModule/store/appointment.types';
 import { getCurrentTime, getCurentMini } from '../../utils/helpers';
+import { appointmentData } from './mock';
 
 const { PRIMARY_COLOR_500 } = getColors(APP_THEME);
 const { SvgCalenderTick, SvgClock, SvgVideoCircle } = Icons;
@@ -52,8 +53,8 @@ const styles = StyleSheet.create({
 });
 
 type Props = {
-  handleVideo: (a:any) => void;
-  items: AppointmentsList;
+  handleVideo: (a: any) => void;
+  items: any;
   handleView: Function;
 };
 const AppointmentsCard = ({ items, handleView, handleVideo }: Props) => {
@@ -62,19 +63,19 @@ const AppointmentsCard = ({ items, handleView, handleVideo }: Props) => {
   const cardWidth = isTablet ? (0.8 * width) : width;
   const currentMin = getCurentMini();
   const isEnable = ((items.appointmentSchedule.appointmentRangeStart - currentMin) < 15 && (items.appointmentSchedule.appointmentRangeStart - currentMin) > 0) ||
-  ((items.appointmentSchedule.appointmentRangeEnd - currentMin < 15) && (items.appointmentSchedule.appointmentRangeEnd - currentMin > 0))
+    ((items.appointmentSchedule.appointmentRangeEnd - currentMin < 15) && (items.appointmentSchedule.appointmentRangeEnd - currentMin > 0))
 
-  const appointmentData = [
-    {
-      profile: items?.doctor?.profileImageUrl,
-      name: items?.doctor?.name,
-      age: (
-        moment().year() - moment(items?.patient?.dateOfBirth).year()
-      ).toString(),
-      gender: items?.patient?.gender,
-      department: items?.doctor?.department?.name
-    },
-  ];
+  // const appointmentData = [
+  //   {
+  //     profile: items?.doctor?.profileImageUrl,
+  //     name: items?.doctor?.name,
+  //     age: (
+  //       moment().year() - moment(items?.patient?.dateOfBirth).year()
+  //     ).toString(),
+  //     gender: items?.patient?.gender,
+  //     department: items?.doctor?.department?.name
+  //   },
+  // ];
 
   return (
     <Button type="link" onClick={() => handleView(items.id)}>
@@ -88,12 +89,13 @@ const AppointmentsCard = ({ items, handleView, handleVideo }: Props) => {
                   overrideStyle={styles.dateText}
                   type="heading500"
                   color="white">
-                  {getDateString(
+                  05th May 2024
+                  {/* {getDateString(
                     items.appointmentDate,
                     'Do MMM YYYY',
                     false,
                     true,
-                  )}
+                  )} */}
                 </Text>
               </Flex>
               <Flex row center overrideStyle={styles.clockConatiner}>
@@ -102,20 +104,19 @@ const AppointmentsCard = ({ items, handleView, handleVideo }: Props) => {
                   overrideStyle={styles.dateText}
                   type="heading500"
                   color="white">
-                  {getCurrentTime(
+                  {/* {getCurrentTime(
                     items.appointmentSchedule.appointmentRangeStart,
-                  )}{' '}
-                  -{getCurrentTime(
-                    items.appointmentSchedule.appointmentRangeEnd,
-                  )}{' '}
+                  )}{' '} */}
+                  10:00 am
+                  -12:00 pm
                 </Text>
               </Flex>
             </Flex>
             {
               items.type === 'video' && (
-            <Button disabled={!isEnable} type="link" onClick={() => handleVideo(items.id)}>
-            <SvgVideoCircle height={28} width={28} fill={PRIMARY_COLOR_500} />
-          </Button>
+                <Button disabled={!isEnable} type="link" onClick={() => handleVideo(items.id)}>
+                  <SvgVideoCircle height={28} width={28} fill={PRIMARY_COLOR_500} />
+                </Button>
               )}
           </Flex>
           <View style={styles.cardListContainer}>

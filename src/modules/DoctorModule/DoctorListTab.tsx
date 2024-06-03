@@ -1,26 +1,27 @@
 /* eslint-disable */
-import {useNavigation} from '@react-navigation/native';
-import React, {useEffect, useState} from 'react';
-import {FlatList, ScrollView, StyleSheet, View} from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import React, { useEffect, useState } from 'react';
+import { FlatList, ScrollView, StyleSheet, View } from 'react-native';
 import {
   Flex,
   SelectTag,
   ButtonGroup,
   Loader,
 } from 'squashapps-react-native-uikit';
-import {useDispatch, useSelector} from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import SearchBar from '../../common/SearchBar';
 import DoctorListCard from './DoctorListCard';
-import {Department} from './store/doctor.types';
-import {AppDispatch, RootState} from '../../redux/store';
+import { Department } from './store/doctor.types';
+import { AppDispatch, RootState } from '../../redux/store';
 import {
   doctorDetailsMiddleWare,
   doctorListMiddleWare,
 } from './store/doctorMiddleware';
-import {branchListMiddleWare} from '../LoginModule/store/loginMiddleWare';
-import {USER_PROFILE} from '../../utils/constants';
-import {getDepartmentType} from '../HomeModule/HomeScreen';
-import {BranchResponseProp} from '../LoginModule/store/login.types';
+import { branchListMiddleWare } from '../LoginModule/store/loginMiddleWare';
+import { USER_PROFILE } from '../../utils/constants';
+import { getDepartmentType } from '../HomeModule/HomeScreen';
+import { BranchResponseProp } from '../LoginModule/store/login.types';
+import { doctorCategory, doctorList } from './mock';
 
 const styles = StyleSheet.create({
   overAll: {
@@ -38,7 +39,7 @@ type doctorListTab = {
   cateogry: string;
 };
 
-const DoctoListTab = ({cateogry}: doctorListTab) => {
+const DoctoListTab = ({ cateogry }: doctorListTab) => {
   const dispatch: AppDispatch = useDispatch();
   const navigation = useNavigation();
   const [departmentId, setDepartmentId] = useState<string>(cateogry);
@@ -71,21 +72,21 @@ const DoctoListTab = ({cateogry}: doctorListTab) => {
   );
   const [branchId, setBranchId] = useState<string>('All');
 
-  useEffect(() => {
-    dispatch(branchListMiddleWare({hospitalId: profileData.hospitalId}));
-  }, []);
+  // useEffect(() => {
+  //   dispatch(branchListMiddleWare({hospitalId: profileData.hospitalId}));
+  // }, []);
 
-  useEffect(() => {
-    dispatch(
-      doctorListMiddleWare({
-        where: {
-          type: 'doctor',
-          ...(branchId !== 'All' && {branchId}),
-          ...(departmentId !== 'All' && {departmentId}),
-        },
-      }),
-    );
-  }, [departmentId, branchId]);
+  // useEffect(() => {
+  //   dispatch(
+  //     doctorListMiddleWare({
+  //       where: {
+  //         type: 'doctor',
+  //         ...(branchId !== 'All' && { branchId }),
+  //         ...(departmentId !== 'All' && { departmentId }),
+  //       },
+  //     }),
+  //   );
+  // }, [departmentId, branchId]);
 
   const handleDepartment = (id: string) => {
     setDepartmentId(id);
@@ -97,10 +98,10 @@ const DoctoListTab = ({cateogry}: doctorListTab) => {
 
   function departmentListConverted(array: Department[]) {
     const convertedArray = array.map(item => {
-      return {label: item?.name, value: item?.id};
+      return { label: item?.name, value: item?.id };
     });
 
-    convertedArray.unshift({label: 'All', value: 'All'});
+    convertedArray.unshift({ label: 'All', value: 'All' });
 
     return convertedArray;
   }
@@ -129,11 +130,10 @@ const DoctoListTab = ({cateogry}: doctorListTab) => {
   }
 
   const handleNavigate = (id: string) => {
-    dispatch(doctorDetailsMiddleWare({doctorId: id})).then(res => {
-      navigation.navigate('DoctorDetailScreen', {
-        id,
-      });
+    navigation.navigate('DoctorDetailScreen', {
+      id: "",
     });
+
   };
 
   return (
@@ -144,13 +144,13 @@ const DoctoListTab = ({cateogry}: doctorListTab) => {
         <Flex>
           <SearchBar placeholder="Search doctors" />
         </Flex>
-        <Flex overrideStyle={[styles.margin12, {zIndex: 22}]}>
+        <Flex overrideStyle={[styles.margin12, { zIndex: 22 }]}>
           <SelectTag
             onChange={handleBranch}
             value={branchId}
-            valueKey="id"
-            labelKey="name"
-            options={branchListConverted(branchListData)}
+            valueKey="value"
+            labelKey="label"
+            options={doctorCategory}
             placeholder="Branch Name"
           />
         </Flex>
@@ -161,27 +161,27 @@ const DoctoListTab = ({cateogry}: doctorListTab) => {
             onChange={handleDepartment}
             defaultValue={departmentId}
             activeButtonColor="#3366FF"
-            buttons={departmentListConverted(departmentList)}
+            buttons={doctorCategory}
           />
         </Flex>
         <FlatList
           showsHorizontalScrollIndicator={false}
-          data={data}
+          data={doctorList}
           keyExtractor={(_item, index) => index.toString()}
-          renderItem={({item}) => (
+          renderItem={({ item }) => (
             <DoctorListCard
-              onClick={() => handleNavigate(item?.id)}
+              onClick={() => handleNavigate()}
               image={
                 item?.profileImageUrl ? item?.profileImageUrl : USER_PROFILE
               }
-              icon={getDepartmentType(item?.department?.name, 33)}
+              icon={getDepartmentType(item?.department, 33)}
               isSearch
               doctorName={item?.name}
-              doctorType={item?.department?.name}
-              branch={item?.branch?.name}
+              doctorType={item?.department}
+              branch={item?.branch}
             />
           )}
-          ListFooterComponent={<View style={{height: 60}} />}
+          ListFooterComponent={<View style={{ height: 60 }} />}
         />
       </ScrollView>
     </>

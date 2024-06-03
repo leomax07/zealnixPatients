@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React, {useEffect, useRef, useState} from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
   Button,
   Colors,
@@ -8,10 +8,10 @@ import {
   getColors,
 } from 'squashapps-react-native-uikit';
 import Geolocation from 'react-native-geolocation-service';
-import {View, TouchableOpacity, Alert, Linking} from 'react-native';
-import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
-import {GooglePlacesAutocomplete} from 'react-native-google-places-autocomplete';
-import {PERMISSIONS, request} from 'react-native-permissions';
+import { View, TouchableOpacity, Alert, Linking } from 'react-native';
+import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
+import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
+import { PERMISSIONS, request } from 'react-native-permissions';
 import {
   API_KEY,
   APP_THEME,
@@ -21,7 +21,7 @@ import {
 import SvgGps from '../../icons/SvgGps';
 import SvgLocationMarker from '../../icons/SvgLocationMarker';
 
-const {PRIMARY_COLOR_500} = getColors(APP_THEME);
+const { PRIMARY_COLOR_500 } = getColors(APP_THEME);
 
 const styles = StyleSheet.create({
   overAll: {
@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     position: 'relative',
     paddingRight: 60,
     backgroundColor: '#FAFAFA',
-    height:50
+    height: 50
   },
   svgGps: {
     position: 'absolute',
@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
 });
 
 type Props = {
-  setGetLocation: (a: {latitude: number; longitude: number}) => void;
+  setGetLocation: (a: { latitude: number; longitude: number }) => void;
   isGetLocation: {
     latitude: number;
     longitude: number;
@@ -114,7 +114,7 @@ const PlaceOrderMap = ({
     var res = await request(PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION);
     if (res === 'granted') {
       Geolocation.getCurrentPosition(
-        ({coords}) => {
+        ({ coords }) => {
           mapRef.current.animateToRegion({
             latitude: coords.latitude,
             longitude: coords.longitude,
@@ -149,7 +149,7 @@ const PlaceOrderMap = ({
         [
           {
             text: 'Cancel',
-            onPress: () => {},
+            onPress: () => { },
           },
           {
             text: 'Enable',
@@ -174,7 +174,7 @@ const PlaceOrderMap = ({
     setFocus(false);
   };
 
-  const focussedStyle = isFocus ? {borderColor: PRIMARY_COLOR_500} : {};
+  const focussedStyle = isFocus ? { borderColor: PRIMARY_COLOR_500 } : {};
 
   const onRegionChangeComplete = (event: any) => {
     setGetLocation({
@@ -184,9 +184,9 @@ const PlaceOrderMap = ({
   };
 
   return (
-    <Flex flex={1} overrideStyle={{position: 'relative'}}>
+    <Flex flex={1} overrideStyle={{ position: 'relative' }}>
       <View style={styles.searchContainer}>
-        <GooglePlacesAutocomplete
+        {/* <GooglePlacesAutocomplete
           textInputProps={{
             autoFocus: false,
             style: [styles.inputStyes, focussedStyle],
@@ -215,24 +215,24 @@ const PlaceOrderMap = ({
               <SvgGps fill={PRIMARY_COLOR_500} />
             </TouchableOpacity>
           )}
-        />
+        /> */}
       </View>
 
-      <MapView
+      {/* <MapView
         showsUserLocation
         showsMyLocationButton={false}
         ref={mapRef}
         onRegionChangeComplete={onRegionChangeComplete}
         provider={PROVIDER_GOOGLE}
         userLocationPriority="high"
-        style={{flex: 1}}
+        style={{ flex: 1 }}
         initialRegion={{
           latitude: isGetLocation.latitude,
           longitude: isGetLocation.longitude,
           latitudeDelta: LATITUDE_DELTA,
           longitudeDelta: LONGITUDE_DELTA,
         }}
-      />
+      /> */}
       <View style={styles.svgMarker}>
         <SvgLocationMarker />
       </View>

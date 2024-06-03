@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {createSlice} from '@reduxjs/toolkit';
-import {USER_DATA} from '../../../utils/asyncStorageConstants';
+import { createSlice } from '@reduxjs/toolkit';
+import { USER_DATA } from '../../../utils/asyncStorageConstants';
 import {
   LoginReducerState,
   BranchReducerInitailState,
@@ -22,7 +22,7 @@ export const userReducer = createSlice({
   initialState: userInitialState,
   reducers: {
     logIn: (state, action) => {
-      AsyncStorage.setItem(USER_DATA, JSON.stringify({...action.payload}));
+      AsyncStorage.setItem(USER_DATA, JSON.stringify({ ...action.payload }));
       state.isLoader = false;
       state.data = action.payload;
     },
@@ -161,7 +161,7 @@ const branchReducer = createSlice({
     });
     builder.addCase(
       branchListMiddleWare.fulfilled,
-      (state, {payload}: {payload: any}) => {
+      (state, { payload }: { payload: any }) => {
         state.isLoading = false;
         state.branch = payload;
       },
@@ -174,7 +174,7 @@ const branchReducer = createSlice({
     });
   },
 });
-export const {logIn, logOut} = userReducer.actions;
+export const { logIn, logOut } = userReducer.actions;
 
 export const userReducers = userReducer.reducer;
 export const loginReducers = loginReducer.reducer;

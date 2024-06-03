@@ -163,3 +163,72 @@ export const cardType = [
     value: '52519896',
   },
 ];
+
+export const doctorList = [
+  {
+    profileImageUrl: 'https://i.ibb.co/bRbhw8R/doctor1.png',
+    department: 'Radiology',
+    name: 'Yuvaraj',
+    branch: 'Saidapet'
+  },
+  {
+    profileImageUrl: 'https://i.ibb.co/bRbhw8R/doctor1.png',
+    department: 'Gynecology',
+    name: 'Anita',
+    branch: 'Anna Nagar'
+  },
+  {
+    profileImageUrl: 'https://i.ibb.co/bRbhw8R/doctor1.png',
+    department: 'Dental',
+    name: 'Ravi',
+    branch: 'T Nagar'
+  },
+  {
+    profileImageUrl: 'https://i.ibb.co/bRbhw8R/doctor1.png',
+    department: 'Cardiology',
+    name: 'Priya',
+    branch: 'Velachery'
+  },
+  {
+    profileImageUrl: 'https://i.ibb.co/bRbhw8R/doctor1.png',
+    department: 'Neurology',
+    name: 'Vijay',
+    branch: 'Adyar'
+  },
+  {
+    profileImageUrl: 'https://i.ibb.co/bRbhw8R/doctor1.png',
+    department: 'Intensive Care',
+    name: 'Karthik',
+    branch: 'Mylapore'
+  },
+  {
+    profileImageUrl: 'https://i.ibb.co/bRbhw8R/doctor1.png',
+    department: 'Surgery',
+    name: 'Meena',
+    branch: 'Royapettah'
+  },
+  {
+    profileImageUrl: 'https://i.ibb.co/bRbhw8R/doctor1.png',
+    department: 'Pharmacy',
+    name: 'Arun',
+    branch: 'Alwarpet'
+  },
+  {
+    profileImageUrl: 'https://i.ibb.co/bRbhw8R/doctor1.png',
+    department: 'Orthopedics',
+    name: 'Suresh',
+    branch: 'Kodambakkam'
+  },
+  {
+    profileImageUrl: 'https://i.ibb.co/bRbhw8R/doctor1.png',
+    department: 'Emergency',
+    name: 'Lakshmi',
+    branch: 'Vadapalani'
+  },
+  {
+    profileImageUrl: 'https://i.ibb.co/bRbhw8R/doctor1.png',
+    department: 'Pediatrics',
+    name: 'Rajesh',
+    branch: 'Tambaram'
+  }
+];

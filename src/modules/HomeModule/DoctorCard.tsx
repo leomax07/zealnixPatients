@@ -1,5 +1,5 @@
 import React from 'react';
-import {View} from 'react-native';
+import { View } from 'react-native';
 import {
   Card,
   Flex,
@@ -7,7 +7,7 @@ import {
   Text,
   StyleSheet,
 } from 'squashapps-react-native-uikit';
-import {USER_PROFILE} from '../../utils/constants';
+import { USER_PROFILE } from '../../utils/constants';
 
 const styles = StyleSheet.create({
   overAll: {
@@ -55,7 +55,7 @@ type Props = {
   onClick?: () => void;
 };
 
-const DoctorCard = ({icon, doctorName, doctorType, image, onClick}: Props) => {
+const DoctorCard = ({ icon, doctorName, doctorType, image, onClick }: Props) => {
   return (
     <Card type="primary" overrideStyle={styles.marginRight} onClick={onClick}>
       <Flex overrideStyle={styles.overAll}>
@@ -68,7 +68,7 @@ const DoctorCard = ({icon, doctorName, doctorType, image, onClick}: Props) => {
         <Flex overrideStyle={styles.linearContaier}>
           <View style={styles.iconContainer}>{icon}</View>
           <Text numberOfLines={1} ellipsizeMode="tail" type="heading500">
-            {`Dr.${doctorName}`}
+            {doctorName}
           </Text>
           <Text
             numberOfLines={1}

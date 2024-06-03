@@ -1,6 +1,6 @@
-import {useNavigation} from '@react-navigation/native';
-import React, {useState} from 'react';
-import {FlatList, View} from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import React, { useState } from 'react';
+import { FlatList, View } from 'react-native';
 import {
   Text,
   Card,
@@ -13,7 +13,7 @@ import {
 import TitleWithValue from '../../common/TitleWithValue';
 import PrescriptionCard from './PrescriptionCard';
 import MapViewStatic from '../../common/MapViewStatic';
-import PlaceOrderMap from './PlaceOrderMap';
+// import  from './PlaceOrderMap';
 
 const styles = StyleSheet.create({
   overAll: {
@@ -75,10 +75,10 @@ const PlaceOrderScreen = () => {
   };
 
   const handlePayment = () => {
-    navigation.navigate('PaymentScreen', {isGetLocation});
+    navigation.navigate('PaymentScreen', { isGetLocation });
   };
 
-  const location = {latitude: 11.6293632, longitude: 78.1615104};
+  const location = { latitude: 11.6293632, longitude: 78.1615104 };
 
   const hanldeEditAddress = () => {
     setMap(true);
@@ -87,13 +87,7 @@ const PlaceOrderScreen = () => {
     setMap(false);
   };
 
-  return isMap ? (
-    <PlaceOrderMap
-      handleConfirmLocation={handleConfirmLocation}
-      setGetLocation={setGetLocation}
-      isGetLocation={isGetLocation}
-    />
-  ) : (
+  return (
     <View>
       <FlatList
         contentContainerStyle={styles.overAll}
@@ -110,7 +104,7 @@ const PlaceOrderScreen = () => {
             />
           </Card>
         )}
-        ListFooterComponentStyle={{marginTop: 20}}
+        ListFooterComponentStyle={{ marginTop: 20 }}
         ListFooterComponent={() => (
           <>
             <CheckBox
@@ -139,7 +133,7 @@ const PlaceOrderScreen = () => {
 
             <Text
               type="heading500"
-              overrideStyle={[styles.headingStyle, {marginTop: 20}]}>
+              overrideStyle={[styles.headingStyle, { marginTop: 20 }]}>
               Payment Summary :
             </Text>
             <TitleWithValue

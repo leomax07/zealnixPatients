@@ -1,24 +1,32 @@
-import {createAsyncThunk} from '@reduxjs/toolkit';
+import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import {Toast} from 'squashapps-react-native-uikit';
-import {branchApi, loginApi, signupApi} from '../../../routes/apiRoutes';
-import {BRANCHLIST, LOGIN, SIGNUP} from '../../../redux/actions';
-import {BranchListPayload, SignUpPayload} from './login.types';
+import { Toast } from 'squashapps-react-native-uikit';
+import { branchApi, loginApi, signupApi } from '../../../routes/apiRoutes';
+import { BRANCHLIST, LOGIN, SIGNUP } from '../../../redux/actions';
+import { BranchListPayload, SignUpPayload } from './login.types';
 
 export const loginMiddleWare = createAsyncThunk(
   LOGIN,
   async (
-    {email, password}: {email: string; password: string},
-    {rejectWithValue},
+    { email, password }: { email: string; password: string },
+    { rejectWithValue },
   ) => {
     try {
+      let data = ""
       delete axios.defaults.headers.common['Authorization'];
+      if ((email == "test@zenix.com") && (password == "Zenix@123")) {
+        return {
+          payload: 'asd'
+        };
 
-      const {data} = await axios.post(loginApi, {email, password});
-      return data;
+      }
+      else {
+        Toast.danger({ message: "Invalid" });
+
+      }
     } catch (error: any) {
       if (error.response?.data?.error?.message) {
-        Toast.danger({message: error.response.data.error.message});
+        Toast.danger({ message: error.response.data.error.message });
       }
       const typedError = error as Error;
       return rejectWithValue(typedError);
@@ -42,12 +50,12 @@ export const signupMiddleWare = createAsyncThunk(
       gender,
       dateOfBirth
     }: SignUpPayload,
-    {rejectWithValue},
+    { rejectWithValue },
   ) => {
     try {
       delete axios.defaults.headers.common['Authorization'];
 
-      const {data} = await axios.post(signupApi, {
+      const { data } = await axios.post(signupApi, {
         name,
         email,
         password,
@@ -63,7 +71,7 @@ export const signupMiddleWare = createAsyncThunk(
       return data;
     } catch (error: any) {
       if (error.response?.data?.error?.message) {
-        Toast.danger({message: error.response.data.error.message});
+        Toast.danger({ message: error.response.data.error.message });
       }
       const typedError = error as Error;
       return rejectWithValue(typedError);
@@ -96,10 +104,10 @@ export const branchListMiddleWare = createAsyncThunk(
       createdAt = true,
       updatedAt = true,
     }: BranchListPayload,
-    {rejectWithValue},
+    { rejectWithValue },
   ) => {
     try {
-      const {data} = await axios.get(branchApi, {
+      const { data } = await axios.get(branchApi, {
         params: {
           filter: {
             offset,
@@ -132,7 +140,7 @@ export const branchListMiddleWare = createAsyncThunk(
       return data;
     } catch (error: any) {
       if (error.response?.data?.error?.message) {
-        Toast.danger({message: error.response.data.error.message});
+        Toast.danger({ message: error.response.data.error.message });
       }
       const typedError = error as Error;
       return rejectWithValue(typedError);

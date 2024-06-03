@@ -1,8 +1,8 @@
 import React from 'react';
 import LinearGradient from 'react-native-linear-gradient';
-import {Flex, Text, StyleSheet, Button} from 'squashapps-react-native-uikit';
+import { Flex, Text, StyleSheet, Button } from 'squashapps-react-native-uikit';
 import TitleWithValue from '../../common/TitleWithValue';
-import {AppointmentDetails as AppointmentDetailsType} from './store/appointment.types';
+import { AppointmentDetails as AppointmentDetailsType } from './store/appointment.types';
 
 const styles = StyleSheet.create({
   detailsText: {
@@ -26,9 +26,9 @@ type Props = {
   data: AppointmentDetailsType;
 };
 
-const AppointmentDetails = ({handleFullView, isView, data}: Props) => {
+const AppointmentDetails = ({ handleFullView, isView, data }: Props) => {
   return (
-    <Flex overrideStyle={{position: 'relative'}}>
+    <Flex overrideStyle={{ position: 'relative' }}>
       <Text type="heading500" overrideStyle={styles.detailsText}>
         Appointment Details :
       </Text>
@@ -37,21 +37,21 @@ const AppointmentDetails = ({handleFullView, isView, data}: Props) => {
         title="Appointment ID"
         titleColor="gray"
         titleSize="body200"
-        value={data.tokenId}
+        value={"124"}
       />
       <TitleWithValue
         between
         title="Appointment via"
         titleColor="gray"
         titleSize="body200"
-        value={data.bookedVia}
+        value="Mobile App"
       />
       <TitleWithValue
         between
         title="Package"
         titleColor="gray"
         titleSize="body200"
-        value={data.type}
+        value="Premium"
       />
       {isView ? (
         <>

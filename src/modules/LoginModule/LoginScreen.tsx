@@ -1,8 +1,8 @@
-import {FormikHelpers, useFormik} from 'formik';
+import { FormikHelpers, useFormik } from 'formik';
 import React from 'react';
-import {ImageBackground, StyleSheet, View} from 'react-native';
-import {useSafeAreaFrame} from 'react-native-safe-area-context';
-import {useDispatch, useSelector} from 'react-redux';
+import { ImageBackground, StyleSheet, View } from 'react-native';
+import { useSafeAreaFrame } from 'react-native-safe-area-context';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   Button,
   Flex,
@@ -13,16 +13,16 @@ import {
   Loader,
 } from 'squashapps-react-native-uikit';
 import CustomStatusBar from '../../common/CustomStatusBar';
-import {AppDispatch, RootState} from '../../redux/store';
-import {useVisibilityIcon} from '../../utils/helpers';
-import {useLanguage} from '../../utils/useLanguage';
-import {AuthScreenNavigationProp} from '../../navigation/types';
-import {loginMiddleWare} from './store/loginMiddleWare';
-import {logIn} from './store/loginReducer';
+import { AppDispatch, RootState } from '../../redux/store';
+import { useVisibilityIcon } from '../../utils/helpers';
+import { useLanguage } from '../../utils/useLanguage';
+import { AuthScreenNavigationProp } from '../../navigation/types';
+import { loginMiddleWare } from './store/loginMiddleWare';
+import { logIn } from './store/loginReducer';
 
 const loginMask = require('../../assets/images/loginBackground.png');
 
-const {isEmpty, isValidEmail} = validators;
+const { isEmpty, isValidEmail } = validators;
 
 const {
   EMAIL_REQUIRED,
@@ -96,12 +96,12 @@ const validate = (values: formType) => {
   return errors;
 };
 
-const LoginScreen = ({navigation}: LoginScreenProps) => {
-  const {width, height} = useSafeAreaFrame();
+const LoginScreen = ({ navigation }: LoginScreenProps) => {
+  const { width, height } = useSafeAreaFrame();
   const dispatch: AppDispatch = useDispatch();
-  const {isVisible, visibleIcon} = useVisibilityIcon();
+  const { isVisible, visibleIcon } = useVisibilityIcon();
 
-  const {isLoading} = useSelector(({loginReducers}: RootState) => {
+  const { isLoading } = useSelector(({ loginReducers }: RootState) => {
     return {
       isLoading: loginReducers.isLoading,
     };
@@ -109,12 +109,12 @@ const LoginScreen = ({navigation}: LoginScreenProps) => {
 
   const handleSubmit = (value: formType, formikHelper: FormikHelpers<any>) => {
     dispatch(
-      loginMiddleWare({email: value.email, password: value.password}),
+      loginMiddleWare({ email: value.email, password: value.password }),
     ).then(res => {
-      if (res.payload?.token) {
+      if (res.payload) {
         formikHelper.resetForm;
-        dispatch(logIn({isLogin: true, token: res.payload.token}));
-        Toast.success({message: 'Login Successful', position: 'TOP'});
+        dispatch(logIn({ isLogin: true, token: "as" }));
+        Toast.success({ message: 'Login Successful', position: 'TOP' });
       }
     });
   };
@@ -132,7 +132,7 @@ const LoginScreen = ({navigation}: LoginScreenProps) => {
   return (
     <Flex>
       {isLoading && <Loader />}
-      <ImageBackground style={{height, width}} source={loginMask}>
+      <ImageBackground style={{ height, width }} source={loginMask}>
         <Flex flex={1} overrideStyle={styles.overAll}>
           <CustomStatusBar />
           <Text overrideStyle={styles.welcomeText} type="heading700">

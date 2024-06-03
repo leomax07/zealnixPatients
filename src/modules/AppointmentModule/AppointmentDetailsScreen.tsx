@@ -1,15 +1,16 @@
-import {useNavigation} from '@react-navigation/native';
-import React, {useState} from 'react';
-import {ScrollView, StyleSheet} from 'react-native';
-import {Button, Flex, Text, Loader} from 'squashapps-react-native-uikit';
-import {useSafeAreaFrame} from 'react-native-safe-area-context';
-import {useSelector} from 'react-redux';
-import {RootState} from '../../redux/store';
+import { useNavigation } from '@react-navigation/native';
+import React, { useState } from 'react';
+import { ScrollView, StyleSheet } from 'react-native';
+import { Button, Flex, Text, Loader } from 'squashapps-react-native-uikit';
+import { useSafeAreaFrame } from 'react-native-safe-area-context';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
 import AppointmentDetails from './AppointmentDetails';
 import AppointmentDetailsProfile from './AppointmentDetailsProfile';
 import PrescriptionList from './PrescriptionList';
 import RazorpayCheckout from 'react-native-razorpay';
 import DocumentList from './DocumentList';
+import { tabletList } from './mock';
 
 const styles = StyleSheet.create({
   overAll: {
@@ -30,9 +31,9 @@ const styles = StyleSheet.create({
 const AppointmentDetailsScreen = () => {
   const [isView, setView] = useState(false);
   const navigation = useNavigation();
-  const {height} = useSafeAreaFrame();
+  const { height } = useSafeAreaFrame();
 
-  const {data, loading, priscriptionList, listLoading, labReportList} =
+  const { data, loading, priscriptionList, listLoading, labReportList } =
     useSelector(
       ({
         appoinmentDetailsReducers,
@@ -54,7 +55,7 @@ const AppointmentDetailsScreen = () => {
 
   const handlePrescribe = () => {
     navigation.navigate('PrescribeMedicineScreen', {
-      appointmentId: data.id,
+      appointmentId: "",
     });
   };
 
@@ -66,21 +67,21 @@ const AppointmentDetailsScreen = () => {
       <ScrollView
         contentContainerStyle={styles.overAll}
         bounces={false}
-        style={{height: height - 320}}>
+        style={{ height: height - 320 }}>
         <Flex>
           <AppointmentDetailsProfile data={data} />
-          {labReportList?.length > 0 && <DocumentList data={labReportList} />}
-          {priscriptionList[0]?.medicine?.id && (
-            <>
-              <Text type="heading500" overrideStyle={styles.prescriptionText}>
-                Prescription
-              </Text>
-              <PrescriptionList
-                items={priscriptionList}
-                handleDetailedScreen={handlePrescribe}
-              />
-            </>
-          )}
+          <DocumentList data={labReportList} />
+
+          <>
+            <Text type="heading500" overrideStyle={styles.prescriptionText}>
+              Prescription
+            </Text>
+            <PrescriptionList
+              items={tabletList.slice(0, 2)}
+              handleDetailedScreen={handlePrescribe}
+            />
+          </>
+
           {data.status !== 'upcoming' && (
             <AppointmentDetails
               isView={isView}
@@ -112,7 +113,7 @@ const AppointmentDetailsScreen = () => {
                 contact: '9191919191',
                 name: 'Surya K',
               },
-              theme: {color: '#53a20e'},
+              theme: { color: '#53a20e' },
             };
             RazorpayCheckout.open(options)
               .then((data: any) => {

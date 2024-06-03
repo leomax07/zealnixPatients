@@ -6,12 +6,12 @@ import {
   getColors,
 } from 'squashapps-react-native-uikit';
 import React from 'react';
-import {View} from 'react-native';
-import {APP_THEME} from '../../utils/constants';
+import { View } from 'react-native';
+import { APP_THEME } from '../../utils/constants';
 import PrescriptionCard from '../PrescribeModule/PrescriptionCard';
-import {PresciptionList} from '../PrescribeModule/store/prescribe.types';
+import { PresciptionList } from '../PrescribeModule/store/prescribe.types';
 
-const {SUCCESS_500} = getColors(APP_THEME);
+const { SUCCESS_500 } = getColors(APP_THEME);
 
 const styles = StyleSheet.create({
   overAllCard: {
@@ -33,10 +33,10 @@ const styles = StyleSheet.create({
 
 type Props = {
   handleDetailedScreen: () => void;
-  items: PresciptionList[];
+  items: any[];
 };
 
-const PrescriptionList = ({handleDetailedScreen, items}: Props) => {
+const PrescriptionList = ({ handleDetailedScreen, items }: Props) => {
   return (
     <Card align="stretch" overrideStyle={styles.overAllCard}>
       <Flex>
@@ -46,8 +46,8 @@ const PrescriptionList = ({handleDetailedScreen, items}: Props) => {
               <PrescriptionCard
                 imageHeight={40}
                 imageWidth={40}
-                title={_item?.medicine?.drugName}
-                manufacturer={_item?.medicine?.manufacturer}
+                title={_item.name}
+                manufacturer={_item?.brand}
                 quantity={0}
               />
             </View>

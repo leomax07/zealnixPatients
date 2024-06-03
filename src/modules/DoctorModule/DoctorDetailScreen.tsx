@@ -1,4 +1,4 @@
-import {RouteProp, useNavigation, useRoute} from '@react-navigation/native';
+import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import React from 'react';
 import {
   Button,
@@ -8,13 +8,13 @@ import {
   Text,
   Icons,
 } from 'squashapps-react-native-uikit';
-import {ScrollView} from 'react-native';
-import {useSelector} from 'react-redux';
+import { ScrollView } from 'react-native';
+import { useSelector } from 'react-redux';
 import DoctorListCard from './DoctorListCard';
 import MapViewStatic from '../../common/MapViewStatic';
-import {RootState} from '../../redux/store';
+import { RootState } from '../../redux/store';
 
-const {SvgAccounts, SvgHospitalOutline} = Icons;
+const { SvgAccounts, SvgHospitalOutline } = Icons;
 const styles = StyleSheet.create({
   overAll: {
     backgroundColor: Colors.WHITE,
@@ -40,17 +40,17 @@ const styles = StyleSheet.create({
   },
 });
 type ParamListBase = {
-  sample: {id: string};
+  sample: { id: string };
 };
 
-interface SampleRouteProp extends RouteProp<ParamListBase, 'sample'> {}
+interface SampleRouteProp extends RouteProp<ParamListBase, 'sample'> { }
 
 const DoctorDetailScreen = () => {
   const navigation = useNavigation();
   const route = useRoute<SampleRouteProp>();
-  const {id} = route.params;
+  const { id } = route.params;
 
-  const {data} = useSelector(({doctorDetailsReducers}: RootState) => {
+  const { data } = useSelector(({ doctorDetailsReducers }: RootState) => {
     return {
       data: doctorDetailsReducers.data,
     };
@@ -64,23 +64,23 @@ const DoctorDetailScreen = () => {
     // navigation.navigate('MessageConfirmationScreen');
   };
 
-  const location = {latitude: 11.6293632, longitude: 78.1615104};
+  const location = { latitude: 11.6293632, longitude: 78.1615104 };
 
   return (
     <ScrollView>
       <Flex overrideStyle={styles.overAll} flex={1}>
         <DoctorListCard
           borderRadius={25}
-          image={data?.profileImageUrl}
-          doctorName={data?.name}
-          doctorType={data?.department?.name}
-          branch={data?.branch?.name}
+          image={"https://i.ibb.co/bRbhw8R/doctor1.png"}
+          doctorName={"YuvarajP"}
+          doctorType={"Radiology"}
+          branch={"Chennai"}
         />
         <Flex row center around overrideStyle={styles.detailsContainer}>
           <Flex row overrideStyle={styles.roundedButtonContainer}>
             <SvgHospitalOutline />
             <Text size={12} color="link" overrideStyle={styles.btnText}>
-              {data?.hospital?.name}{' '}
+              GH,Kovai
             </Text>
           </Flex>
           <Flex row overrideStyle={styles.roundedButtonContainer}>
@@ -105,16 +105,16 @@ const DoctorDetailScreen = () => {
         </Text>
         <Text
           color="gray"
-          overrideStyle={[styles.paragraphContianer, {marginBottom: 16}]}>
+          overrideStyle={[styles.paragraphContianer, { marginBottom: 16 }]}>
           {data?.branch?.address}
         </Text>
 
-        <MapViewStatic
+        {/* <MapViewStatic
           latitude={location.latitude}
           longitude={location.longitude}
-        />
+        /> */}
 
-        <Flex overrideStyle={{marginTop: 30}} flex={1} bottom>
+        <Flex overrideStyle={{ marginTop: 30 }} flex={1} bottom>
           <Button onClick={handleNewAppointment}>Make Appointment</Button>
         </Flex>
       </Flex>

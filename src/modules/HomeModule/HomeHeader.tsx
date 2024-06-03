@@ -1,9 +1,9 @@
 import React from 'react';
-import {useSelector} from 'react-redux';
-import {Flex, Icons, StyleSheet, Text} from 'squashapps-react-native-uikit';
-import {RootState} from '../../redux/store';
+import { useSelector } from 'react-redux';
+import { Flex, Icons, StyleSheet, Text } from 'squashapps-react-native-uikit';
+import { RootState } from '../../redux/store';
 
-const {SvgArrowDown, SvgBell} = Icons;
+const { SvgArrowDown, SvgBell } = Icons;
 const styles = StyleSheet.create({
   heading400: {
     marginTop: 10,
@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
   },
 });
 const HomeHeader = () => {
-  const {data} = useSelector(({profileReducers}: RootState) => {
+  const { data } = useSelector(({ profileReducers }: RootState) => {
     return {
       data: profileReducers.data,
     };
@@ -23,11 +23,11 @@ const HomeHeader = () => {
     <Flex row center between overrideStyle={styles.overAll}>
       <Flex>
         <Text transform="capitalize" type="heading600">
-          Hi, {data.name}
+          Hi, Mr.Pathimuga Pandiyan
         </Text>
         <Flex row center overrideStyle={styles.heading400}>
           <Text type="heading400" color="gray">
-            {data?.branch?.name}
+            Dindugal
             {'  '}
           </Text>
           <SvgArrowDown />

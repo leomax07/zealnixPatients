@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from 'react';
-import {ScrollView, View} from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { ScrollView, View } from 'react-native';
 import {
   Flex,
   StyleSheet,
@@ -8,15 +8,15 @@ import {
   Button,
   ButtonGroup,
 } from 'squashapps-react-native-uikit';
-import moment, {Moment} from 'moment';
-import {RouteProp, useNavigation, useRoute} from '@react-navigation/native';
+import moment, { Moment } from 'moment';
+import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import AppointTypeList from './AppointTypeList';
 import TypeDescriptionCard from './TypeDescriptionCard';
-import {AppDispatch, RootState} from '../../redux/store';
-import {useDispatch, useSelector} from 'react-redux';
-import {appointmentSlotListMiddleWare} from './store/doctorMiddleware';
-import {getCurrentTime} from '../../utils/helpers';
-import {postAppointmentMiddleWare} from '../AppointmentModule/store/appointmentMiddleware';
+import { AppDispatch, RootState } from '../../redux/store';
+import { useDispatch, useSelector } from 'react-redux';
+import { appointmentSlotListMiddleWare } from './store/doctorMiddleware';
+import { getCurrentTime } from '../../utils/helpers';
+import { postAppointmentMiddleWare } from '../AppointmentModule/store/appointmentMiddleware';
 import WeekCalendar from '../../package/WeeklyCalender/WeeklyCalendar';
 
 const styles = StyleSheet.create({
@@ -41,15 +41,15 @@ const styles = StyleSheet.create({
   },
 });
 type ParamListBase = {
-  sample: {id: string};
+  sample: { id: string };
 };
 
-interface SampleRouteProp extends RouteProp<ParamListBase, 'sample'> {}
+interface SampleRouteProp extends RouteProp<ParamListBase, 'sample'> { }
 
 const NewAppointmentScreen = () => {
   const navigation = useNavigation();
   const route = useRoute<SampleRouteProp>();
-  const {id} = route.params;
+  const { id } = route.params;
   const dispatch: AppDispatch = useDispatch();
   const [type, SetType] = useState('regular');
   const [selectedSlot, setSelectedSlot] = useState('');
@@ -57,7 +57,7 @@ const NewAppointmentScreen = () => {
   const [title, setTitle] = useState('');
 
   const [date, setDay] = useState<Moment>(moment().startOf('date'));
-  const {slotList, doctorDetail, profileData} = useSelector(
+  const { slotList, doctorDetail, profileData } = useSelector(
     ({
       appointmentSlotListReducers,
       doctorDetailsReducers,
@@ -87,33 +87,8 @@ const NewAppointmentScreen = () => {
   };
 
   const handleConfirm = () => {
-    dispatch(
-      postAppointmentMiddleWare({
-        type,
-        branchId: doctorDetail?.branchId,
-        hospitalId: doctorDetail?.hospitalId,
-        doctorId: doctorDetail.id,
-        patientContact: profileData.phone,
-        patientEmail: profileData.email,
-        title,
-        notes: note,
-        status: 'upcoming',
-        bookedVia: 'mobile',
-        appointmentDate: date,
-        appointmentScheduleId: selectedSlot,
-        patientId: profileData?.id,
-      }),
-    ).then(res => {
-      console.log('latest', res)
-      if (res.meta.requestStatus === 'fulfilled') {
-        SetType('regular');
-        setTitle('');
-        setNotes('');
-        setSelectedSlot('');
-        setDay(moment());
-        navigation.navigate('MessageConfirmationScreen');
-      }
-    });
+
+    navigation.navigate('MessageConfirmationScreen');
   };
   useEffect(() => {
     dispatch(
@@ -181,7 +156,7 @@ const NewAppointmentScreen = () => {
           textSize={14}
           isShadow
         />
-        <View style={{marginVertical: 20}}>
+        <View style={{ marginVertical: 20 }}>
           <InputText
             label="Appointment Title"
             value={title}

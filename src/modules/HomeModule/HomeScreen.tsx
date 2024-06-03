@@ -1,17 +1,17 @@
-import {useNavigation} from '@react-navigation/native';
-import React, {useEffect} from 'react';
-import {FlatList, RefreshControl, ScrollView, View} from 'react-native';
-import {useSafeAreaFrame} from 'react-native-safe-area-context';
+import { useNavigation } from '@react-navigation/native';
+import React, { useEffect } from 'react';
+import { FlatList, RefreshControl, ScrollView, View } from 'react-native';
+import { useSafeAreaFrame } from 'react-native-safe-area-context';
 import SwiperFlatList from 'react-native-swiper-flatlist';
-import {Flex, StyleSheet, Text, Loader} from 'squashapps-react-native-uikit';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import { Flex, StyleSheet, Text, Loader } from 'squashapps-react-native-uikit';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import moment from 'moment';
-import {useDispatch, useSelector} from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import CustomStatusBar from '../../common/CustomStatusBar';
 import IconRoundBackground from '../../common/IconRoundBackground';
 import TitleWithViewAll from '../../common/TitleWithViewAll';
 import SvgGynecology from '../../icons/SvgGynecology';
-import {IS_ANDROID} from '../../utils/constants';
+import { IS_ANDROID } from '../../utils/constants';
 import SvgRadiology from '../../icons/SvgRadiology';
 import SvgDental from '../../icons/SvgDental';
 import SvgNeurology from '../../icons/SvgNeurology';
@@ -24,8 +24,8 @@ import SvgPediatrics from '../../icons/SvgPediatrics';
 import SvgGeneral from '../../icons/SvgGeneral';
 import SvgCardiology from '../../icons/SvgCardiology';
 import Carousel from '../../package/Carousal/Carousel';
-import {AppDispatch, RootState} from '../../redux/store';
-import {getUserMiddleWare} from '../ProfileModule/store/profileMiddleware';
+import { AppDispatch, RootState } from '../../redux/store';
+import { getUserMiddleWare } from '../ProfileModule/store/profileMiddleware';
 import {
   doctorDetailsMiddleWare,
   doctorListMiddleWare,
@@ -41,6 +41,7 @@ import {
   departmentListMiddleware,
   todaysappointmentMiddleWare,
 } from './store/homeMiddleware';
+import { departmentData, doctorData } from './mock';
 
 const styles = StyleSheet.create({
   overAll: {
@@ -98,47 +99,47 @@ export const getDepartmentType = (type?: string, size?: number) => {
   }
 };
 const HomeScreen = () => {
-  const {height, width} = useSafeAreaFrame();
+  const { height, width } = useSafeAreaFrame();
   const dispatch: AppDispatch = useDispatch();
   const navigation = useNavigation();
   const [refreshing, setRefreshing] = React.useState(false);
   const insets = useSafeAreaInsets();
 
   const onRefresh = React.useCallback(() => {
-    setRefreshing(true);
-    dispatch(
-      todaysappointmentMiddleWare({
-        where: {
-          appointmentDate: moment().startOf('day'),
-        },
-        order: 'appointmentDate',
-        include: [
-          'hospital',
-          'patient',
-          'doctor',
-          'appointmentSchedule',
-          'department',
-        ],
-      }),
-    ).then(() => {
-      dispatch(departmentListMiddleware()).then(() => {
-        dispatch(getUserMiddleWare()).then(res => {
-          if (res.payload?.hospitalId) {
-            dispatch(
-              doctorListMiddleWare({
-                where: {
-                  type: 'doctor',
-                  hospitalId: res.payload?.hospitalId,
-                },
-                include: [{relation: 'department'}],
-              }),
-            ).then(() => {
-              setRefreshing(false);
-            });
-          }
-        });
-      });
-    });
+    // setRefreshing(true);
+    // dispatch(
+    //   todaysappointmentMiddleWare({
+    //     where: {
+    //       appointmentDate: moment().startOf('day'),
+    //     },
+    //     order: 'appointmentDate',
+    //     include: [
+    //       'hospital',
+    //       'patient',
+    //       'doctor',
+    //       'appointmentSchedule',
+    //       'department',
+    //     ],
+    //   }),
+    // ).then(() => {
+    //   dispatch(departmentListMiddleware()).then(() => {
+    //     dispatch(getUserMiddleWare()).then(res => {
+    //       if (res.payload?.hospitalId) {
+    //         dispatch(
+    //           doctorListMiddleWare({
+    //             where: {
+    //               type: 'doctor',
+    //               hospitalId: res.payload?.hospitalId,
+    //             },
+    //             include: [{relation: 'department'}],
+    //           }),
+    //         ).then(() => {
+    //           setRefreshing(false);
+    //         });
+    //       }
+    //     });
+    //   });
+    // });
   }, []);
 
   const handleDocorList = () => {
@@ -166,7 +167,7 @@ const HomeScreen = () => {
   };
 
   const handleDoctorDetails = (id: string) => {
-    dispatch(doctorDetailsMiddleWare({doctorId: id})).then(res => {
+    dispatch(doctorDetailsMiddleWare({ doctorId: id })).then(res => {
       if (res?.payload) {
         navigation.navigate('BottomTab', {
           screen: 'HomeTab',
@@ -184,7 +185,7 @@ const HomeScreen = () => {
   const {
     isLoading,
     appointment,
-    departmentData,
+    // departmentData,
     isDepartmentListLoading,
     isProfileLoading,
     doctorList,
@@ -211,37 +212,37 @@ const HomeScreen = () => {
     },
   );
 
-  useEffect(() => {
-    dispatch(
-      todaysappointmentMiddleWare({
-        where: {
-          appointmentDate: moment().startOf('day'),
-        },
-        order: 'appointmentDate',
-        include: [
-          'hospital',
-          'patient',
-          'doctor',
-          'appointmentSchedule',
-          'department',
-        ],
-      }),
-    );
-    dispatch(departmentListMiddleware());
-    dispatch(getUserMiddleWare()).then(res => {
-      if (res.payload?.hospitalId) {
-        dispatch(
-          doctorListMiddleWare({
-            where: {
-              type: 'doctor',
-              hospitalId: res.payload?.hospitalId,
-            },
-            include: [{relation: 'department'}],
-          }),
-        );
-      }
-    });
-  }, []);
+  // useEffect(() => {
+  //   dispatch(
+  //     todaysappointmentMiddleWare({
+  //       where: {
+  //         appointmentDate: moment().startOf('day'),
+  //       },
+  //       order: 'appointmentDate',
+  //       include: [
+  //         'hospital',
+  //         'patient',
+  //         'doctor',
+  //         'appointmentSchedule',
+  //         'department',
+  //       ],
+  //     }),
+  //   );
+  //   dispatch(departmentListMiddleware());
+  //   dispatch(getUserMiddleWare()).then(res => {
+  //     if (res.payload?.hospitalId) {
+  //       dispatch(
+  //         doctorListMiddleWare({
+  //           where: {
+  //             type: 'doctor',
+  //             hospitalId: res.payload?.hospitalId,
+  //           },
+  //           include: [{ relation: 'department' }],
+  //         }),
+  //       );
+  //     }
+  //   });
+  // }, []);
 
   const dataList = [
     {
@@ -262,14 +263,11 @@ const HomeScreen = () => {
   };
 
   const handleView = (id: string) => {
-    dispatch(appoinmentDetailsMiddleWare({appointmentId: id})).then(res => {
-      if (res.payload?.id) {
-        navigation.navigate('BottomTab', {
-          screen: 'AppointmentTab',
-          params: {screen: 'AppointmentDetailsScreen'},
-        });
-      }
+    navigation.navigate('BottomTab', {
+      screen: 'AppointmentTab',
+      params: { screen: 'AppointmentDetailsScreen' },
     });
+
   };
 
   const handleVideo = (e: string) => {
@@ -344,13 +342,13 @@ const HomeScreen = () => {
 
   return (
     <>
-      {appoinmentDetailsLoading && <Loader />}
+      {/* {appoinmentDetailsLoading && <Loader />} */}
       <CustomStatusBar />
       <Flex overrideStyle={styles.overAll}>
         <HomeHeader />
         <ScrollView
           nestedScrollEnabled
-          style={{height: height - scrollHeight}}
+          style={{ height: height - scrollHeight }}
           refreshControl={
             <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
           }>
@@ -361,7 +359,7 @@ const HomeScreen = () => {
             />
             <SwiperFlatList
               data={appointment}
-              renderItem={({item}) => (
+              renderItem={({ item }) => (
                 <AppointmentsCard
                   items={item}
                   handleView={handleView}
@@ -398,12 +396,12 @@ const HomeScreen = () => {
               style={[styles.appointmentFlatList]}
               data={departmentData}
               keyExtractor={(_item, index) => index.toString()}
-              renderItem={({item}) => {
+              renderItem={({ item }) => {
                 return (
                   <IconRoundBackground
                     icon={getDepartmentType(item?.name)}
                     name={item?.name}
-                    onClick={() => handleDoctorView(item?.id)}
+                    onClick={() => handleDoctorView(item?.name)}
                   />
                 );
               }}
@@ -418,14 +416,14 @@ const HomeScreen = () => {
             />
             <FlatList
               showsHorizontalScrollIndicator={false}
-              style={[styles.appointmentFlatList, {marginBottom: 50}]}
+              style={[styles.appointmentFlatList, { marginBottom: 50 }]}
               horizontal
-              data={doctorList}
+              data={doctorData}
               keyExtractor={(_item, index) => index.toString()}
-              renderItem={({item}) => {
+              renderItem={({ item }) => {
                 return (
                   <DoctorCard
-                    onClick={() => handleDoctorDetails(item?.id)}
+                    onClick={() => handleDoctorDetails(item?.name)}
                     image={item?.profileImageUrl}
                     icon={getDepartmentType(item?.department?.name, 26)}
                     doctorName={item?.name}
