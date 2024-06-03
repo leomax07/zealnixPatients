@@ -1,0 +1,98 @@
+{
+  "project_info": {
+    "project_number": "721117142210",
+    "project_id": "garuda-33960",
+    "storage_bucket": "garuda-33960.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:721117142210:android:e1d89a3a9ae871a481af5b",
+        "android_client_info": {
+          "package_name": "com.garuda_doctors"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "721117142210-fi3o6b89im03p162vkika53dipher6oc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.garuda_doctors",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "721117142210-u2rofu55h0vg8val3np8adl511se66jp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC7BO173rGWzm1ifI58X81y-_xUWUcj4bU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "721117142210-u2rofu55h0vg8val3np8adl511se66jp.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "721117142210-qc668hakv79pi7stk5j24kunvskgkm86.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.garuda.doctors"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:721117142210:android:c7c66582ca11e55781af5b",
+        "android_client_info": {
+          "package_name": "com.garuda_patients"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "721117142210-jder1m17tviuf8fpj13br4fujl9anald.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.garuda_patients",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "721117142210-u2rofu55h0vg8val3np8adl511se66jp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC7BO173rGWzm1ifI58X81y-_xUWUcj4bU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "721117142210-u2rofu55h0vg8val3np8adl511se66jp.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "721117142210-qc668hakv79pi7stk5j24kunvskgkm86.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.garuda.doctors"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
