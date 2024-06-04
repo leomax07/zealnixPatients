@@ -1,6 +1,6 @@
 export const appointmentData = [
   {
-    profile: 'https://i.ibb.co/bRbhw8R/doctor1.png',
+    profile: 'https://i.ibb.co/54nsKgR/doctor.webp',
     name: 'Dr. Matias',
     des: 'Psychiatrist',
   },
@@ -35,67 +35,67 @@ export const departmentData = [
 export const doctorData = [
   {
     id: 1,
-    profileImageUrl: 'https://i.ibb.co/bRbhw8R/doctor1.png',
+    profileImageUrl: 'https://i.ibb.co/54nsKgR/doctor.webp',
     department: { name: 'Radiology' },
     name: 'Dr. John Doe'
   },
   {
     id: 2,
-    profileImageUrl: 'https://i.ibb.co/bRbhw8R/doctor1.png',
+    profileImageUrl: 'https://i.ibb.co/54nsKgR/doctor.webp',
     department: { name: 'Gynecology' },
     name: 'Dr. Jane Smith'
   },
   {
     id: 3,
-    profileImageUrl: 'https://i.ibb.co/bRbhw8R/doctor1.png',
+    profileImageUrl: 'https://i.ibb.co/54nsKgR/doctor.webp',
     department: { name: 'Dental' },
     name: 'Dr. Emily Johnson'
   },
   {
     id: 4,
-    profileImageUrl: 'https://i.ibb.co/bRbhw8R/doctor1.png',
+    profileImageUrl: 'https://i.ibb.co/54nsKgR/doctor.webp',
     department: { name: 'Cardiology' },
     name: 'Dr. Michael Brown'
   },
   {
     id: 5,
-    profileImageUrl: 'https://i.ibb.co/bRbhw8R/doctor1.png',
+    profileImageUrl: 'https://i.ibb.co/54nsKgR/doctor.webp',
     department: { name: 'Neurology' },
     name: 'Dr. Sarah Davis'
   },
   {
     id: 6,
-    profileImageUrl: 'https://i.ibb.co/bRbhw8R/doctor1.png',
+    profileImageUrl: 'https://i.ibb.co/54nsKgR/doctor.webp',
     department: { name: 'Intensive Care' },
     name: 'Dr. James Wilson'
   },
   {
     id: 7,
-    profileImageUrl: 'https://i.ibb.co/bRbhw8R/doctor1.png',
+    profileImageUrl: 'https://i.ibb.co/54nsKgR/doctor.webp',
     department: { name: 'Surgery' },
     name: 'Dr. Linda Martinez'
   },
   {
     id: 8,
-    profileImageUrl: 'https://i.ibb.co/bRbhw8R/doctor1.png',
+    profileImageUrl: 'https://i.ibb.co/54nsKgR/doctor.webp',
     department: { name: 'Pharmacy' },
     name: 'Dr. Robert Anderson'
   },
   {
     id: 9,
-    profileImageUrl: 'https://i.ibb.co/bRbhw8R/doctor1.png',
+    profileImageUrl: 'https://i.ibb.co/54nsKgR/doctor.webp',
     department: { name: 'Orthopedics' },
     name: 'Dr. Patricia Thomas'
   },
   {
     id: 10,
-    profileImageUrl: 'https://i.ibb.co/bRbhw8R/doctor1.png',
+    profileImageUrl: 'https://i.ibb.co/54nsKgR/doctor.webp',
     department: { name: 'Emergency' },
     name: 'Dr. Charles Jackson'
   },
   {
     id: 11,
-    profileImageUrl: 'https://i.ibb.co/bRbhw8R/doctor1.png',
+    profileImageUrl: 'https://i.ibb.co/54nsKgR/doctor.webp',
     department: { name: 'Pediatrics' },
     name: 'Dr. Mary White'
   }

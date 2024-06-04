@@ -71,7 +71,7 @@ const DoctorDetailScreen = () => {
       <Flex overrideStyle={styles.overAll} flex={1}>
         <DoctorListCard
           borderRadius={25}
-          image={"https://i.ibb.co/bRbhw8R/doctor1.png"}
+          image={"https://i.ibb.co/54nsKgR/doctor.webp"}
           doctorName={"YuvarajP"}
           doctorType={"Radiology"}
           branch={"Chennai"}

@@ -166,67 +166,67 @@ export const cardType = [
 
 export const doctorList = [
   {
-    profileImageUrl: 'https://i.ibb.co/bRbhw8R/doctor1.png',
+    profileImageUrl: 'https://i.ibb.co/54nsKgR/doctor.webp',
     department: 'Radiology',
     name: 'Yuvaraj',
     branch: 'Saidapet'
   },
   {
-    profileImageUrl: 'https://i.ibb.co/bRbhw8R/doctor1.png',
+    profileImageUrl: 'https://i.ibb.co/54nsKgR/doctor.webp',
     department: 'Gynecology',
     name: 'Anita',
     branch: 'Anna Nagar'
   },
   {
-    profileImageUrl: 'https://i.ibb.co/bRbhw8R/doctor1.png',
+    profileImageUrl: 'https://i.ibb.co/54nsKgR/doctor.webp',
     department: 'Dental',
     name: 'Ravi',
     branch: 'T Nagar'
   },
   {
-    profileImageUrl: 'https://i.ibb.co/bRbhw8R/doctor1.png',
+    profileImageUrl: 'https://i.ibb.co/54nsKgR/doctor.webp',
     department: 'Cardiology',
     name: 'Priya',
     branch: 'Velachery'
   },
   {
-    profileImageUrl: 'https://i.ibb.co/bRbhw8R/doctor1.png',
+    profileImageUrl: 'https://i.ibb.co/54nsKgR/doctor.webp',
     department: 'Neurology',
     name: 'Vijay',
     branch: 'Adyar'
   },
   {
-    profileImageUrl: 'https://i.ibb.co/bRbhw8R/doctor1.png',
+    profileImageUrl: 'https://i.ibb.co/54nsKgR/doctor.webp',
     department: 'Intensive Care',
     name: 'Karthik',
     branch: 'Mylapore'
   },
   {
-    profileImageUrl: 'https://i.ibb.co/bRbhw8R/doctor1.png',
+    profileImageUrl: 'https://i.ibb.co/54nsKgR/doctor.webp',
     department: 'Surgery',
     name: 'Meena',
     branch: 'Royapettah'
   },
   {
-    profileImageUrl: 'https://i.ibb.co/bRbhw8R/doctor1.png',
+    profileImageUrl: 'https://i.ibb.co/54nsKgR/doctor.webp',
     department: 'Pharmacy',
     name: 'Arun',
     branch: 'Alwarpet'
   },
   {
-    profileImageUrl: 'https://i.ibb.co/bRbhw8R/doctor1.png',
+    profileImageUrl: 'https://i.ibb.co/54nsKgR/doctor.webp',
     department: 'Orthopedics',
     name: 'Suresh',
     branch: 'Kodambakkam'
   },
   {
-    profileImageUrl: 'https://i.ibb.co/bRbhw8R/doctor1.png',
+    profileImageUrl: 'https://i.ibb.co/54nsKgR/doctor.webp',
     department: 'Emergency',
     name: 'Lakshmi',
     branch: 'Vadapalani'
   },
   {
-    profileImageUrl: 'https://i.ibb.co/bRbhw8R/doctor1.png',
+    profileImageUrl: 'https://i.ibb.co/54nsKgR/doctor.webp',
     department: 'Pediatrics',
     name: 'Rajesh',
     branch: 'Tambaram'
