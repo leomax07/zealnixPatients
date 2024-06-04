@@ -61,9 +61,9 @@ type formType = {
 };
 
 const initialValues: formType = {
-  name: '',
-  email: '',
-  phone: '',
+  name: 'Pathimuga Pandiyan',
+  email: 'pathimugapandiyan@gmail.com',
+  phone: '1234567890',
   profileImageUrl: USER_PROFILE,
 };
 
@@ -140,12 +140,12 @@ const EditProfileScreen = ({navigation}: any) => {
     validate,
   });
 
-  useEffect(() => {
-    formik.setFieldValue('name', data?.name);
-    formik.setFieldValue('email', data?.email);
-    formik.setFieldValue('phone', data?.phone);
-    formik.setFieldValue('profileImageUrl', data?.profileImageUrl);
-  }, [data]);
+  // useEffect(() => {
+  //   formik.setFieldValue('name', data?.name);
+  //   formik.setFieldValue('email', data?.email);
+  //   formik.setFieldValue('phone', data?.phone);
+  //   formik.setFieldValue('profileImageUrl', data?.profileImageUrl);
+  // }, [data]);
 
   const handleCoverUpload = (image: any) => {
     const formData: any = new FormData();

@@ -3,14 +3,14 @@ import {Platform} from 'react-native';
 export const APP_THEME = 'doctor';
 export const IS_ANDROID = Platform.OS === 'android';
 
-export const CHANEL_ID = 'Garuda Patients';
+export const CHANEL_ID = 'Zenix Patients';
 
 export const LATITUDE_DELTA = 0.005625094176657797;
 export const LONGITUDE_DELTA = 0.004125572741031647;
 export const API_KEY = 'AIzaSyACoQDKy4sNuO2kNZITlRXP8dZ_ffJBRns';
 
 export const APP_ID = '38342ecaf3fd4a2a80bdd5082829288f';
-// export const AGORA_CHANNEL_NAME = 'Test Garuda';
+
 export const AGORA_TOKEN =
   '007eJxTYAir776uO6fWeH78R7NnjrsDnc3EDRaZv9zyOCu3c7p9raICg7GFsYlRanJimnFaikmiUaKFQVJKiqmBhZGFkaWRhUWa8sxFKQ2BjAzLzBoYGKEQxOdlcE8sKk1JVAguLE0szmBgAAA9CCG2';
 export const UID = 0;

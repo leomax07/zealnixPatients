@@ -103,7 +103,8 @@ const ProfileScreen = () => {
                 />
                 <Flex middle overrideStyle={styles.nameContainer}>
                   <Text transform="capitalize" type="heading600">
-                    {data?.name}
+                    {/* {data?.name} */}
+                    Mr.pathimuga Pandiyan
                   </Text>
                   <Button
                     overrideStyle={{marginTop: 5}}

@@ -68,7 +68,7 @@ export const useNotifee = () => {
   const createChanelId = async () => {
     await notifee.createChannel({
       id: CHANEL_ID,
-      name: 'Garuda Channel',
+      name: 'Zenix Channel',
       importance: AndroidImportance.HIGH,
     });
   };

@@ -1,30 +1,47 @@
-import { Department } from '../../DoctorModule/store/doctor.types';
-import { BranchResponseProp } from '../../LoginModule/store/login.types';
+import {Department} from '../../DoctorModule/store/doctor.types';
+import {BranchResponseProp} from '../../LoginModule/store/login.types';
 
-export interface AppointmentsList {
+// export interface AppointmentsList {
+//   id: string;
+//   type: string;
+//   hospitalId: string;
+//   branchId: string;
+//   patientId: string;
+//   doctorId: string;
+//   appointmentStart: string;
+//   appointmentEnd: string;
+//   patientContact: string;
+//   patientEmail: string;
+//   appointmentScheduleId: string;
+//   title: string;
+//   notes: string;
+//   status: string;
+//   createdAt: string;
+//   updatedAt: string;
+//   hospital: Hospital;
+//   patient: Patient;
+//   doctor: Doctor;
+//   appointmentDate: string;
+//   appointmentSchedule: AppointmentScheduleType;
+
+// }
+
+export type AppointmentsList = {
   id: string;
   type: string;
-  hospitalId: string;
-  branchId: string;
-  patientId: string;
-  doctorId: string;
+  status: string;
+  doctor: {
+    name: string;
+    profileImageUrl: string;
+  };
   appointmentStart: string;
   appointmentEnd: string;
-  patientContact: string;
-  patientEmail: string;
-  appointmentScheduleId: string;
-  title: string;
-  notes: string;
-  status: string;
-  createdAt: string;
-  updatedAt: string;
-  hospital: Hospital;
-  patient: Patient;
-  doctor: Doctor;
-  appointmentDate: string;
-  appointmentSchedule: AppointmentScheduleType;
+  appointmentSchedule: {
+    appointmentRangeStart: number;
+    appointmentRangeEnd: number;
+  };
+};
 
-}
 export interface Hospital {
   id: string;
   name: string;
@@ -97,9 +114,8 @@ export interface Doctor {
   additionalProp1: AdditionalProp1;
   branch?: BranchResponseProp;
   department?: Department;
-
 }
-export interface AdditionalProp1 { }
+export interface AdditionalProp1 {}
 
 export interface AppointmentsReducerState {
   isLoading: boolean;
@@ -136,7 +152,7 @@ export interface AppointmentDetails {
   patient: Patient;
   doctor: Doctor;
 
-  appointmentSchedule?:AppointmentScheduleType
+  appointmentSchedule?: AppointmentScheduleType;
 }
 
 export interface AppointmentDetailsReducerState {
@@ -151,7 +167,7 @@ export interface AppointmentPayload {
   relation?: {
     relation?: any;
   }[];
-  type?: string
+  type?: string;
 }
 
 export interface Where {
@@ -226,7 +242,7 @@ export interface AppointmentScheduleType {
   maxSlots: number;
   createdAt: string;
   updatedAt: string;
-  doctorIds?: (string)[] | null;
+  doctorIds?: string[] | null;
   createdById: string;
   updatedById: string;
   hospitalId: string;

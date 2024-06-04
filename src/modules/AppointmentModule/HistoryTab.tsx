@@ -25,6 +25,7 @@ import {
   vitalListMiddleWare,
 } from './store/appointmentMiddleware';
 import {getCurentMini} from '../../utils/helpers';
+import { mockAppointments } from './mock';
 
 const {isEmpty} = validators;
 const {THIS_FIELD_REQUIRED} = useLanguage;
@@ -120,7 +121,7 @@ const HistoryTab = () => {
   };
 
   const searchByName = (name: string) => {
-    const filteredAppointments = appoinmentListData.filter(appointment => {
+    const filteredAppointments = mockAppointments.filter(appointment => {
       const appointmentName = appointment.doctor.name.toLowerCase();
       return appointmentName.includes(name.toLowerCase());
     });
@@ -132,12 +133,19 @@ const HistoryTab = () => {
     setSearch(val);
   };
 
+  // const result = useMemo(() => {
+  //   const output = search ? searchByName(search) : appoinmentListData;
+  //   setLoader(false);
+
+  //   return output;
+  // }, [search, appoinmentListData]);
+
   const result = useMemo(() => {
-    const output = search ? searchByName(search) : appoinmentListData;
+    const output = search ? searchByName(search) : mockAppointments;
     setLoader(false);
 
     return output;
-  }, [search, appoinmentListData]);
+  }, [search, mockAppointments]);
 
   const formik = useFormik({
     initialValues,
@@ -146,42 +154,43 @@ const HistoryTab = () => {
   });
 
   const handleViewCard = (id: string) => {
-    dispatch(appoinmentDetailsMiddleWare({appointmentId: id})).then(res => {
-      if (res.payload?.id) {
-        dispatch(
-          prescriptionsListMiddleWare({
-            where: {
-              appointmentId: res.payload?.id,
-            },
-          }),
-        ).then(response => {
-          if (response.payload) {
-            dispatch(
-              vitalListMiddleWare({
-                where: {
-                  appointmentId: res.payload.id,
-                },
-              }),
-            ).then(data => {
-              if (data.payload) {
-                dispatch(
-                  getLabReportList({
-                    where: {
-                      patientId: res.payload?.patientId,
-                    },
-                    include: [{relation: 'lab'}],
-                  }),
-                ).then(responseee => {
-                  if (responseee.payload) {
-                    navigation.navigate('AppointmentDetailsScreen');
-                  }
-                });
-              }
-            });
-          }
-        });
-      }
-    });
+    navigation.navigate('AppointmentDetailsScreen');
+    // dispatch(appoinmentDetailsMiddleWare({appointmentId: id})).then(res => {
+    //   if (res.payload?.id) {
+    //     dispatch(
+    //       prescriptionsListMiddleWare({
+    //         where: {
+    //           appointmentId: res.payload?.id,
+    //         },
+    //       }),
+    //     ).then(response => {
+    //       if (response.payload) {
+    //         dispatch(
+    //           vitalListMiddleWare({
+    //             where: {
+    //               appointmentId: res.payload.id,
+    //             },
+    //           }),
+    //         ).then(data => {
+    //           if (data.payload) {
+    //             dispatch(
+    //               getLabReportList({
+    //                 where: {
+    //                   patientId: res.payload?.patientId,
+    //                 },
+    //                 include: [{relation: 'lab'}],
+    //               }),
+    //             ).then(responseee => {
+    //               if (responseee.payload) {
+    //                 navigation.navigate('AppointmentDetailsScreen');
+    //               }
+    //             });
+    //           }
+    //         });
+    //       }
+    //     });
+    //   }
+    // });
   };
 
   return (

@@ -98,7 +98,7 @@ const AppointmentDetailsScreen = () => {
       </Flex>
 
       <Flex overrideStyle={styles.expBtn}>
-        <Button
+        {/* <Button
           onClick={() => {
             var options = {
               description: 'Credits towards consultation',
@@ -133,6 +133,9 @@ const AppointmentDetailsScreen = () => {
                 // alert(`Error: ${error.code} | ${error.description}`);
               });
           }}>
+          Razor Booking
+        </Button> */}
+        <Button>
           Razor Booking
         </Button>
       </Flex>

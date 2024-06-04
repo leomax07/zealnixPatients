@@ -25,6 +25,7 @@ import {
   vitalListMiddleWare,
 } from './store/appointmentMiddleware';
 import {getCurentMini} from '../../utils/helpers';
+import { mockAppointments } from './mock';
 
 const {isEmpty} = validators;
 const {THIS_FIELD_REQUIRED} = useLanguage;
@@ -118,7 +119,7 @@ const UpcomingTab = () => {
   };
 
   const searchByName = (name: string) => {
-    const filteredAppointments = appoinmentListData.filter(appointment => {
+    const filteredAppointments = mockAppointments.filter(appointment => {
       const appointmentName = appointment.doctor.name.toLowerCase();
       return appointmentName.includes(name.toLowerCase());
     });
@@ -130,12 +131,18 @@ const UpcomingTab = () => {
     setSearch(val);
   };
 
+  // const result = useMemo(() => {
+  //   const output = search ? searchByName(search) : appoinmentListData;
+  //   setLoader(false);
+
+  //   return output;
+  // }, [search, appoinmentListData]);
+
   const result = useMemo(() => {
-    const output = search ? searchByName(search) : appoinmentListData;
-    setLoader(false);
+    const output = search ? searchByName(search) : mockAppointments;
 
     return output;
-  }, [search, appoinmentListData]);
+  }, [search, mockAppointments]);
 
   const formik = useFormik({
     initialValues,
@@ -144,31 +151,32 @@ const UpcomingTab = () => {
   });
 
   const handleViewCard = (id: string) => {
-    dispatch(appoinmentDetailsMiddleWare({appointmentId: id})).then(res => {
-      if (res.payload?.id) {
-        dispatch(
-          prescriptionsListMiddleWare({
-            where: {
-              appointmentId: res.payload?.id,
-            },
-          }),
-        ).then(response => {
-          if (response.payload) {
-            dispatch(
-              vitalListMiddleWare({
-                where: {
-                  appointmentId: res.payload.id,
-                },
-              }),
-            ).then(data => {
-              if (data.payload) {
-                navigation.navigate('AppointmentDetailsScreen');
-              }
-            });
-          }
-        });
-      }
-    });
+    navigation.navigate('AppointmentDetailsScreen');
+    // dispatch(appoinmentDetailsMiddleWare({appointmentId: id})).then(res => {
+    //   if (res.payload?.id) {
+    //     dispatch(
+    //       prescriptionsListMiddleWare({
+    //         where: {
+    //           appointmentId: res.payload?.id,
+    //         },
+    //       }),
+    //     ).then(response => {
+    //       if (response.payload) {
+    //         dispatch(
+    //           vitalListMiddleWare({
+    //             where: {
+    //               appointmentId: res.payload.id,
+    //             },
+    //           }),
+    //         ).then(data => {
+    //           if (data.payload) {
+    //             navigation.navigate('AppointmentDetailsScreen');
+    //           }
+    //         });
+    //       }
+    //     });
+    //   }
+    // });
   };
 
   return (
